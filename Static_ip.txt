@@ -1,0 +1,71 @@
+IP configurations of routers as follows:
+
+Hostname Router0
+
+Router>enable
+Router#config terminal
+Router(config)#interface se2/0
+Router(config-if)#ip address 192.168.72.1 255.255.255.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#interface fa0/0
+Router(config-if)#ip address 10.0.0.1 255.0.0.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#interface fa1/0
+Router(config-if)#ip address 20.0.0.1 255.0.0.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#exit
+Router#
+
+
+Hostname Router1
+
+Router>enable
+Router#config terminal
+Router(config)#interface se2/0
+Router(config-if)#ip address 192.168.72.2 255.255.255.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#interface fa0/0
+Router(config-if)#ip address 30.0.0.1 255.0.0.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#interface fa1/0
+Router(config-if)#ip address 40.0.0.1 255.0.0.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#exit
+Router#
+
+
+
+
+Protocol configuration Router Information Protocol(RIP):
+
+Hostname Router0:
+
+Router>enable
+Router#config terminal
+Router(config)#router rip
+Router(config-router)#network 10.0.0.0
+Router(config-router)#network 20.0.0.0
+Router(config-router)#network 192.168.72.0
+Router(config-router)#exit
+Router(config)#exit
+Router#
+
+
+Hostname Router1:
+
+Router>enable
+Router#config terminal
+Router(config)#router rip
+Router(config-router)#network 30.0.0.0
+Router(config-router)#network 40.0.0.0
+Router(config-router)#network 192.168.72.0
+Router(config-router)#exit
+Router(config)#exit
+Router#
+
