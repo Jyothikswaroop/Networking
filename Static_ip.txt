@@ -69,3 +69,8 @@ Router(config-router)#exit
 Router(config)#exit
 Router#
 
+
+
+Assign IP addresses to PCs Statically as per their corresponding networks
+
+Now you can send data between PCs
