@@ -1,0 +1,71 @@
+IP configurations of routers as follows:
+
+Hostname Router0
+
+Router>enable
+Router#config terminal
+Router(config)#interface se2/0
+Router(config-if)#ip address 192.168.72.1 255.255.255.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#ip dhcp pool netA
+Router(dhcp-config)#network 10.0.0.0 255.0.0.0
+Router(dhcp-config)#default-router 10.0.0.1
+Router(dhcp-config)#dns-server 30.0.0.2
+Router(dhcp-config)#exit
+Router(config)#ip dhcp pool netB
+Router(dhcp-config)#network 20.0.0.0 255.0.0.0
+Router(dhcp-config)#default-router 20.0.0.1
+Router(dhcp-config)#dns-server 30.0.0.2
+Router(dhcp-config)#exit
+Router(config)#
+
+
+Hostname Router1:
+
+Router>enable
+Router#config terminal
+Router(config)#interface se2/0
+Router(config-if)#ip address 192.168.72.2 255.255.255.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#ip dhcp pool netA1
+Router(dhcp-config)#network 30.0.0.0 255.0.0.0
+Router(dhcp-config)#default-router 30.0.0.1
+Router(dhcp-config)#dns-server 30.0.0.2
+Router(dhcp-config)#exit
+Router(config)#ip dhcp pool netB1
+Router(dhcp-config)#network 40.0.0.0 255.0.0.0
+Router(dhcp-config)#default-router 40.0.0.1
+Router(dhcp-config)#dns-server 30.0.0.2
+Router(dhcp-config)#exit
+Router(config)#
+
+
+Protocol configuration Router Information Protocol(RIP):
+
+Hostname Router0:
+
+Router>enable
+Router#config terminal
+Router(config)#router rip
+Router(config-router)#network 10.0.0.0
+Router(config-router)#network 20.0.0.0
+Router(config-router)#network 192.168.72.0
+Router(config-router)#exit
+Router(config)#exit
+Router#
+
+
+Hostname Router1:
+
+Router>enable
+Router#config terminal
+Router(config)#router rip
+Router(config-router)#network 30.0.0.0
+Router(config-router)#network 40.0.0.0
+Router(config-router)#network 192.168.72.0
+Router(config-router)#exit
+Router(config)#exit
+Router#
+
