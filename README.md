@@ -1,2 +1,2 @@
 # Networking
-Networking configuring Routers and Switches with different Network Protocols
+Networking configurations of Routers and Switches with different Network Protocols
