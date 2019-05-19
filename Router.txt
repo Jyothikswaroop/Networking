@@ -1,0 +1,23 @@
+Hostname Router0
+configured as following:
+
+
+Router>en
+Router#config terminal
+Router(config)#interface fastethernet0/0
+Router(config-if)#ip address 10.0.0.1 255.0.0.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#interface fastethernet1/0
+Router(config-if)#ip address 20.0.0.1 255.0.0.0
+Router(config-if)#no shutdown
+Router(config-if)#exit
+Router(config)#exit
+Router#
+
+
+
+Assign IP addresses to PCs Statically as per their corresponding networks
+
+Now you can send data between PCs
+
