@@ -91,6 +91,8 @@ Router(config-ext-nacl)#exit
 Router(config)#interface fa1/0
 Router(config-if)#ip access-group 100 in
 Router(config-if)#exit
+Router(config)#
+
 
 
 Assign IP address to each PC statically 
@@ -99,5 +101,5 @@ Now you can transmit data between PCs
 execpt PC1 and PC3
 PC0 cannot access dns server0.
 
-Router(config)#
+
 
