@@ -71,6 +71,6 @@ Router#
 
 
 open destop of each PC and request for IP address using DHCP
-Now you can transfer data between PCs.
+Now you can transmit data between PCs.
 
 
