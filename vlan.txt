@@ -1,0 +1,83 @@
+vlan configuration 
+
+at switch0:
+
+switch>enable
+switch#config terminal
+Switch(config)#vlan 2
+Switch(config-vlan)#name A
+Switch(config-vlan)#vlan 3
+Switch(config-vlan)#name B
+Switch(config-vlan)#exit
+Switch(config)#interface range fa0/2-3
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#switchport access vlan 2
+Switch(config-if-range)#exit
+Switch(config)#interface range fa0/4-5
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#switchport access vlan 3
+Switch(config-if-range)#exit
+Switch(config)#interface fa0/1
+Switch(config-if)#switchport mode trunk
+Switch(config-if)#exit
+switch(config)#exit
+switch#
+
+
+at switch1:
+
+switch>enable
+switch#config terminal
+Switch(config)#vlan 2
+Switch(config-vlan)#name A1
+Switch(config-vlan)#vlan 3
+Switch(config-vlan)#name B1
+Switch(config-vlan)#exit
+Switch(config)#interface range fa0/2-3
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#switchport access vlan 2
+Switch(config-if-range)#exit
+Switch(config)#interface range fa0/4-5
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#switchport access vlan 3
+Switch(config-if-range)#exit
+Switch(config)#interface fa0/1
+Switch(config-if)#switchport mode trunk
+Switch(config-if)#exit
+switch(config)#exit
+switch#
+
+
+Create sub interface for each vlan at routers totally create 4 sub interfaces for 4 vlans at 2 switches
+
+
+at router0 
+for switch0(connected to interface fa0/0):
+
+Router(config)#interface fa0/0.1
+Router(config-subif)#encapsulation dot1Q 2
+Router(config-subif)#ip address 10.0.0.1 255.0.0.0
+Router(config-subif)#exit
+Router(config)#interface fa0/0.2
+Router(config-subif)#encapsulation dot1Q 3
+Router(config-subif)#ip address 20.0.0.1 255.0.0.0
+Router(config-subif)#exit
+Router(config)#exit
+Router#
+
+for switch1(connected to interface fa1/0):
+
+Router(config)#interface fa1/0.1
+Router(config-subif)#encapsulation dot1Q 2
+Router(config-subif)#ip address 30.0.0.1 255.0.0.0
+Router(config-subif)#exit
+Router(config)#interface fa1/0.2
+Router(config-subif)#encapsulation dot1Q 3
+Router(config-subif)#ip address 40.0.0.1 255.0.0.0
+Router(config-subif)#exit
+Router(config)#exit
+Router#
+
+
+Assign IP addresses to PCs statically as per corresponding networks
+Now you have created 2 different networks on the same interface.
